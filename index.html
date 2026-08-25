@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MeetSolⁿ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0a0a0f;
+      --surface:  #111118;
+      --card:     #16161f;
+      --border:   #22223a;
+      --accent:   #7c6bff;
+      --accent2:  #b8aaff;
+      --text:     #e8e8f0;
+      --muted:    #6b6b88;
+      --green:    #4cffaa;
+      --warning:  #ffd166;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+    .nav-logo sup { font-size: 0.6rem; color: var(--accent2); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 100px 2rem 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(124,107,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      padding: 4px 12px;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
+    .hero-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -3px;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .hero-logo span { color: var(--accent); }
+    .hero-logo sup {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.3em;
+      color: var(--accent2);
+      vertical-align: super;
+      letter-spacing: 0;
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 1.2rem;
+      max-width: 380px;
+      line-height: 1.7;
+    }
+    .hero-tagline em {
+      color: var(--accent2);
+      font-style: normal;
+    }
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    /* ── CHAPTER GRID ── */
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .chapter-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: flex; align-items: flex-start; gap: 12px;
+    }
+    .chapter-card:hover {
+      border-color: var(--accent);
+      background: #1a1a28;
+    }
+    .chapter-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent);
+      min-width: 22px;
+      margin-top: 2px;
+      opacity: 0.8;
+    }
+    .chapter-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .chapter-actions {
+      margin-left: auto;
+      display: flex; gap: 8px; align-items: center;
+      flex-shrink: 0;
+    }
+    .btn-view, .btn-dl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      padding: 4px 9px;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      border: 1px solid;
+    }
+    .btn-view {
+      color: var(--accent2);
+      border-color: var(--accent2);
+      background: transparent;
+    }
+    .btn-view:hover { background: var(--accent2); color: var(--bg); }
+    .btn-dl {
+      color: var(--muted);
+      border-color: var(--border);
+      background: transparent;
+    }
+    .btn-dl:hover { border-color: var(--green); color: var(--green); }
+
+    /* PDF Viewer Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      width: min(95vw, 900px);
+      height: 90vh;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .modal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .modal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent2);
+    }
+    .modal-actions { display: flex; gap: 10px; align-items: center; }
+    .modal-dl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--green);
+      border: 1px solid var(--green);
+      background: transparent;
+      padding: 5px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .modal-dl:hover { background: var(--green); color: var(--bg); }
+    .modal-close {
+      font-size: 1.1rem; cursor: pointer; color: var(--muted); background: none; border: none;
+      line-height: 1; padding: 4px 8px; border-radius: 3px;
+      transition: color 0.15s;
+    }
+    .modal-close:hover { color: var(--text); }
+    iframe.pdf-frame {
+      flex: 1; border: none; background: #1a1a1a;
+    }
+
+    /* ── AI SECTION ── */
+    .ai-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 28px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      flex-wrap: wrap;
+      transition: border-color 0.2s;
+    }
+    .ai-card:hover { border-color: var(--accent); }
+    .ai-card-left h3 {
+      font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 6px;
+    }
+    .ai-card-left p { font-size: 0.85rem; color: var(--muted); max-width: 420px; }
+    .btn-primary {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 0.85rem;
+      background: var(--accent);
+      color: #fff;
+      border: none; border-radius: 5px;
+      padding: 11px 22px;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+
+    /* ── COMING SOON ── */
+    .coming-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .coming-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .coming-card::before {
+      content: 'SOON';
+      position: absolute; top: 12px; right: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: var(--warning);
+      border: 1px solid var(--warning);
+      padding: 2px 7px;
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+    .coming-card h3 {
+      font-size: 0.95rem; font-weight: 600; color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .coming-card p { font-size: 0.8rem; color: var(--border); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 2rem;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .footer-dev {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .footer-dev span { color: var(--accent2); }
+    .footer-secret {
+      font-size: 0.82rem;
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .chapter-grid { grid-template-columns: 1fr; }
+      .coming-grid { grid-template-columns: 1fr; }
+      .hero-logo { letter-spacing: -2px; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Meet<span style="color:var(--text)">Sol</span><sup>n</sup></div>
+    <ul class="nav-links">
+      <li><a href="#maths">Maths</a></li>
+      <li><a href="#ai">AI</a></li>
+      <li><a href="#coming">More</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">PERSONAL SOLUTION VAULT</div>
+    <div class="hero-logo">Meet<span>Sol</span><sup>n</sup></div>
+    <p class="hero-tagline">
+      All solutions, notes &amp; practicals — curated by Meet.<br/>
+      <em>Stop texting. Start browsing.</em>
+    </p>
+    <div class="scroll-hint">SCROLL</div>
+  </section>
+
+  <!-- MATHS SECTION -->
+  <section class="section" id="maths">
+    <div class="section-label">01 / Mathematics</div>
+    <h2 class="section-title">Class 11 — All Chapters</h2>
+    <p class="section-desc">Click any chapter to view the PDF inline. Download button on the right.</p>
+
+    <div class="chapter-grid">
+      <!-- Each card: view opens modal, download triggers download -->
+      <div class="chapter-card" data-pdf="MATHEMATICS/Ch-01_Sets.pdf" data-name="Sets">
+        <span class="chapter-num">01</span>
+        <span class="chapter-name">Sets</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-01_Sets.pdf','Sets')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-01_Sets.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">02</span>
+        <span class="chapter-name">Relations &amp; Functions</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-02_Relations-Functions.pdf','Relations & Functions')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-02_Relations-Functions.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">03</span>
+        <span class="chapter-name">Trigonometric Functions</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-03_Trigonometric-Functions.pdf','Trigonometric Functions')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-03_Trigonometric-Functions.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">04</span>
+        <span class="chapter-name">Principle of Mathematical Induction</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-04_Principle-Of-Mathematical-Ind....pdf','Principle of Mathematical Induction')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-04_Principle-Of-Mathematical-Ind....pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">05</span>
+        <span class="chapter-name">Complex Numbers &amp; Quadratic Equations</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-05_Complex-Nos.-Quadratic-Eqs.pdf','Complex Numbers & Quadratic Equations')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-05_Complex-Nos.-Quadratic-Eqs.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">06</span>
+        <span class="chapter-name">Linear Inequalities</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-06_Linear-Inequalities.pdf','Linear Inequalities')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-06_Linear-Inequalities.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">07</span>
+        <span class="chapter-name">Permutations &amp; Combinations</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-07_Permutations-Combinations.pdf','Permutations & Combinations')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-07_Permutations-Combinations.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">08</span>
+        <span class="chapter-name">Binomial Theorem</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-08_Binomial-Theorem.pdf','Binomial Theorem')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-08_Binomial-Theorem.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">09</span>
+        <span class="chapter-name">Sequences &amp; Series</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-09_Sequences-Series.pdf','Sequences & Series')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-09_Sequences-Series.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">10</span>
+        <span class="chapter-name">Straight Lines</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-10_Straight-Lines.pdf','Straight Lines')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-10_Straight-Lines.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">11</span>
+        <span class="chapter-name">Conic Sections</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-11_Conic-Sections.pdf','Conic Sections')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-11_Conic-Sections.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">12</span>
+        <span class="chapter-name">Introduction to 3D Geometry</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-12_Introduction-To-3-Dimensional....pdf','Introduction to 3D Geometry')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-12_Introduction-To-3-Dimensional....pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">13</span>
+        <span class="chapter-name">Limits &amp; Derivatives</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-13_Limits-Derivatives.pdf','Limits & Derivatives')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-13_Limits-Derivatives.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">14</span>
+        <span class="chapter-name">Mathematical Reasoning</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-14_Mathematical-Reasoning.pdf','Mathematical Reasoning')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-14_Mathematical-Reasoning.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">15</span>
+        <span class="chapter-name">Statistics</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-15_Statistics.pdf','Statistics')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-15_Statistics.pdf" download>↓</a>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <span class="chapter-num">16</span>
+        <span class="chapter-name">Probability</span>
+        <div class="chapter-actions">
+          <a class="btn-view" href="#" onclick="openPDF(event,'MATHEMATICS/Ch-16_Probability.pdf','Probability')">View</a>
+          <a class="btn-dl" href="MATHEMATICS/Ch-16_Probability.pdf" download>↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI SECTION -->
+  <section class="section" id="ai">
+    <div class="section-label">02 / Artificial Intelligence</div>
+    <h2 class="section-title">AI Practicals 2026</h2>
+    <p class="section-desc">All practical files hosted on Dropbox. Click below to access the full folder.</p>
+    <div class="ai-card">
+      <div class="ai-card-left">
+        <h3>Artificial Intelligence — Practicals (2026)</h3>
+        <p>Complete set of AI practical submissions for the academic year 2026. Access the full folder on Dropbox.</p>
+      </div>
+      <a class="btn-primary" href="https://www.dropbox.com/scl/fo/385ietxfvzpw1r06olykl/AAi-0UlVr5Qq5O2RVqcPqRc?rlkey=n6o18ruk6aykuj6862v3hmkdr&st=r43h949c&dl=0" target="_blank" rel="noopener">Open Folder ↗</a>
+    </div>
+  </section>
+
+  <!-- COMING SOON -->
+  <section class="section" id="coming">
+    <div class="section-label">03 / Coming Soon</div>
+    <h2 class="section-title">More Subjects</h2>
+    <p class="section-desc">These sections are being prepared. Check back soon.</p>
+    <div class="coming-grid">
+      <div class="coming-card">
+        <h3>English</h3>
+        <p>Notes, solutions &amp; writing samples.</p>
+      </div>
+      <div class="coming-card">
+        <h3>Physics Lab Readings</h3>
+        <p>Practical readings &amp; observations.</p>
+      </div>
+      <div class="coming-card">
+        <h3>Chemistry Lab Readings</h3>
+        <p>Titrations, practicals &amp; viva prep.</p>
+      </div>
+      <div class="coming-card">
+        <h3>More…</h3>
+        <p>More content will be added progressively.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-dev">Proudly developed by <span>Meet Nimbalkar</span></p>
+    <p class="footer-secret"><strong>Rumita must not know this !!</strong></p>
+  </footer>
+
+  <!-- PDF MODAL -->
+  <div class="modal-overlay" id="pdfModal" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <span class="modal-title" id="modalTitle">Chapter PDF</span>
+        <div class="modal-actions">
+          <a class="modal-dl" id="modalDl" href="#" download>↓ Download</a>
+          <button class="modal-close" onclick="closePDF()">✕</button>
+        </div>
+      </div>
+      <iframe class="pdf-frame" id="pdfFrame" src="" title="PDF Viewer"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openPDF(e, path, name) {
+      e.preventDefault();
+      document.getElementById('pdfFrame').src = path;
+      document.getElementById('modalTitle').textContent = name;
+      document.getElementById('modalDl').href = path;
+      document.getElementById('pdfModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePDF() {
+      document.getElementById('pdfModal').classList.remove('active');
+      document.getElementById('pdfFrame').src = '';
+      document.body.style.overflow = '';
+    }
+    function closeModal(e) {
+      if (e.target.id === 'pdfModal') closePDF();
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePDF(); });
+  </script>
+
+</body>
+</html>
