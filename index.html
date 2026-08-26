@@ -71,17 +71,15 @@
     }
     .nav-logo sup { font-size: 0.6rem; color: var(--accent2); }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links li {
-      opacity: 0; transform: translateY(-8px);
-    }
+    .nav-links li { opacity: 0; transform: translateY(-8px); }
     .nav-links li:nth-child(1) { animation: fadeDown 0.6s 0.35s forwards; }
     .nav-links li:nth-child(2) { animation: fadeDown 0.6s 0.45s forwards; }
     .nav-links li:nth-child(3) { animation: fadeDown 0.6s 0.55s forwards; }
+    .nav-links li:nth-child(4) { animation: fadeDown 0.6s 0.65s forwards; }
     .nav-links a {
       color: var(--muted); text-decoration: none;
       font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em;
-      position: relative; padding-bottom: 2px;
-      transition: color 0.2s;
+      position: relative; padding-bottom: 2px; transition: color 0.2s;
     }
     .nav-links a::after {
       content: ''; position: absolute; bottom: 0; left: 0;
@@ -90,6 +88,54 @@
     }
     .nav-links a:hover { color: var(--text); }
     .nav-links a:hover::after { width: 100%; }
+
+    /* ── QUICK ACCESS ── */
+    .quick-access {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      justify-content: center;
+      margin-top: 2.4rem;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 0.7s 1s cubic-bezier(.22,1,.36,1) forwards;
+      position: relative; z-index: 1;
+    }
+    .qa-btn {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 18px;
+      text-decoration: none; color: var(--text);
+      font-size: 0.88rem; font-weight: 500;
+      transition: border-color 0.22s, background 0.22s, transform 0.18s, box-shadow 0.22s;
+      position: relative; overflow: hidden;
+    }
+    .qa-btn::before {
+      content: '';
+      position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(124,107,255,0.07), transparent);
+      transition: left 0.4s ease;
+    }
+    .qa-btn:hover::before { left: 150%; }
+    .qa-btn:hover {
+      border-color: var(--accent);
+      background: #1a1a28;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(124,107,255,0.14);
+    }
+    .qa-btn--urgent {
+      border-color: rgba(255,107,107,0.4);
+      color: #ff8a8a;
+    }
+    .qa-btn--urgent:hover {
+      border-color: #ff8a8a;
+      background: rgba(255,107,107,0.08);
+      box-shadow: 0 6px 22px rgba(255,107,107,0.14);
+    }
+    .qa-btn--urgent::before {
+      background: linear-gradient(90deg, transparent, rgba(255,107,107,0.07), transparent);
+    }
+    .qa-icon { font-size: 1rem; line-height: 1; }
+    .qa-label { font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.01em; }
 
     /* ── HERO ── */
     .hero {
@@ -599,6 +645,77 @@
     }
     .new-content-banner .banner-text { font-size: 0.82rem; color: var(--warning); line-height: 1.5; }
     .new-content-banner .banner-text strong { display: block; font-weight: 700; margin-bottom: 2px; }
+    /* ── UPCOMING SUBMISSIONS TABLE ── */
+    .upcoming-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .upcoming-table thead tr {
+      border-bottom: 1px solid var(--border);
+    }
+    .upcoming-table th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; font-weight: 700;
+      color: var(--accent); letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      text-align: left;
+    }
+    .upcoming-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .upcoming-table tbody tr:hover { background: #1a1a28; }
+    .upcoming-table tbody tr:last-child { border-bottom: none; }
+    .upcoming-table td {
+      padding: 16px;
+      vertical-align: middle;
+      color: var(--text);
+    }
+
+    .sub-teacher-cell {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sub-teacher-cell img {
+      width: 42px; height: 42px; border-radius: 50%;
+      object-fit: cover; border: 2px solid var(--border);
+      flex-shrink: 0;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .upcoming-table tbody tr:hover .sub-teacher-cell img {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124,107,255,0.15);
+    }
+    .sub-teacher-cell span {
+      font-size: 0.8rem; color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.3;
+    }
+
+    .sub-title { font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .sub-type  { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+
+    .deadline-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,107,107,0.1);
+      border: 1px solid rgba(255,107,107,0.35);
+      color: #ff8a8a;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 3px;
+      white-space: nowrap;
+    }
+    .deadline-badge::before { content: '⏰'; font-size: 0.7rem; }
+
+    .sub-actions { display: flex; gap: 8px; align-items: center; }
+
+    /* pulse on deadline badge */
+    @keyframes deadlinePulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
+      50%      { box-shadow: 0 0 0 4px rgba(255,107,107,0.15); }
+    }
+    .deadline-badge { animation: deadlinePulse 2.5s ease-in-out infinite; }
   </style>
 </head>
 <body>
@@ -633,11 +750,6 @@
   <!-- NAV -->
   <nav id="mainNav">
     <div class="nav-logo">Meet<span style="color:var(--text)">Sol</span><sup>n</sup></div>
-    <ul class="nav-links">
-      <li><a href="#maths">Maths</a></li>
-      <li><a href="#ai">AI</a></li>
-      <li><a href="#coming">More</a></li>
-    </ul>
   </nav>
 
   <!-- HERO -->
@@ -650,6 +762,22 @@
       All solutions, notes &amp; practicals — curated by Meet.<br/>
       <em>Stop texting. Start browsing.</em>
     </p>
+
+    <div class="quick-access">
+      <a class="qa-btn" href="#maths">
+        <span class="qa-label">Maths</span>
+      </a>
+      <a class="qa-btn" href="#ai">
+        <span class="qa-label">AI</span>
+      </a>
+      <a class="qa-btn" href="#coming">
+        <span class="qa-label">English</span>
+      </a>
+      <a class="qa-btn qa-btn--urgent" href="#upcoming">
+        <span class="qa-label">Upcoming Submissions</span>
+      </a>
+    </div>
+
     <div class="scroll-hint">SCROLL</div>
   </section>
 
@@ -852,6 +980,51 @@
         <h3>More…</h3>
         <p>More content will be added progressively.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING SUBMISSIONS -->
+  <section class="section" id="upcoming">
+    <div class="section-label reveal">04 / Upcoming</div>
+    <h2 class="section-title reveal">Upcoming Submissions</h2>
+    <p class="section-desc reveal">Track deadlines, view question papers, and download them below.</p>
+
+    <div class="reveal" style="background:var(--card); border:1px solid var(--border); border-radius:8px; overflow:hidden;">
+      <table class="upcoming-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Submission</th>
+            <th>Teacher</th>
+            <th>Deadline</th>
+            <th>Question Paper</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted);padding-left:20px;">01</td>
+            <td>
+              <div class="sub-title">AI Practical File Submission</div>
+              <div class="sub-type">Practical File</div>
+            </td>
+            <td>
+              <div class="sub-teacher-cell">
+                <img src="hemlata.jpg" alt="Hemlata Shreyank Patel"/>
+                <span>Hemlata<br/>Shreyank Patel</span>
+              </div>
+            </td>
+            <td>
+              <span class="deadline-badge">30 / 08 / 2026 or before</span>
+            </td>
+            <td>
+              <div class="sub-actions">
+                <a class="btn-view" href="#" onclick="openPDF(event,'practical-file.pdf','AI Practical File — Questions')">View</a>
+                <a class="btn-dl" href="practical-file.pdf" download>↓</a>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
