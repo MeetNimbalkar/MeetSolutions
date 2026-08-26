@@ -710,12 +710,65 @@
 
     .sub-actions { display: flex; gap: 8px; align-items: center; }
 
-    /* pulse on deadline badge */
     @keyframes deadlinePulse {
       0%,100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
       50%      { box-shadow: 0 0 0 4px rgba(255,107,107,0.15); }
     }
     .deadline-badge { animation: deadlinePulse 2.5s ease-in-out infinite; }
+
+    /* ── MOBILE CARD (hidden on desktop) ── */
+    .upcoming-mobile { display: none; }
+
+    @media (max-width: 640px) {
+      .upcoming-table-wrap { display: none; }
+      .upcoming-mobile { display: flex; flex-direction: column; gap: 0; }
+
+      .upcoming-mobile-row {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 18px 16px;
+        display: flex; flex-direction: column; gap: 14px;
+      }
+
+      .umr-top {
+        display: flex; align-items: center; gap: 12px;
+      }
+      .umr-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.65rem; color: var(--muted); flex-shrink: 0;
+      }
+      .umr-title-block { flex: 1; }
+      .umr-title { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 2px; }
+      .umr-type  { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--muted); }
+
+      .umr-teacher {
+        display: flex; align-items: center; gap: 10px;
+        padding: 10px 12px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+      }
+      .umr-teacher img {
+        width: 38px; height: 38px; border-radius: 50%;
+        object-fit: cover; border: 2px solid var(--border); flex-shrink: 0;
+      }
+      .umr-teacher span {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.72rem; color: var(--muted); line-height: 1.4;
+      }
+
+      .umr-deadline { }
+
+      .umr-actions {
+        display: flex; gap: 10px;
+      }
+      .umr-actions .btn-view,
+      .umr-actions .btn-dl {
+        flex: 1; text-align: center;
+        padding: 9px 0; font-size: 0.75rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -989,7 +1042,9 @@
     <h2 class="section-title reveal">Upcoming Submissions</h2>
     <p class="section-desc reveal">Track deadlines, view question papers, and download them below.</p>
 
-    <div class="reveal" style="background:var(--card); border:1px solid var(--border); border-radius:8px; overflow:hidden;">
+    <div class="reveal" style="background:var(--card); border:1px solid var(--border); border-radius:8px; overflow:hidden;" class="upcoming-table-wrap">
+      <!-- Desktop table -->
+      <div class="upcoming-table-wrap">
       <table class="upcoming-table">
         <thead>
           <tr>
@@ -1025,6 +1080,31 @@
           </tr>
         </tbody>
       </table>
+      </div>
+
+      <!-- Mobile card -->
+      <div class="upcoming-mobile">
+        <div class="upcoming-mobile-row">
+          <div class="umr-top">
+            <span class="umr-num">01</span>
+            <div class="umr-title-block">
+              <div class="umr-title">AI Practical File Submission</div>
+              <div class="umr-type">Practical File</div>
+            </div>
+          </div>
+          <div class="umr-teacher">
+            <img src="hemlata.jpg" alt="Hemlata Shreyank Patel"/>
+            <span>Hemlata<br/>Shreyank Patel</span>
+          </div>
+          <div class="umr-deadline">
+            <span class="deadline-badge">30 / 08 / 2026 or before</span>
+          </div>
+          <div class="umr-actions">
+            <a class="btn-view" href="#" onclick="openPDF(event,'practical-file.pdf','AI Practical File — Questions')">View PDF</a>
+            <a class="btn-dl" href="practical-file.pdf" download>↓ Download</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
