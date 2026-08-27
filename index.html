@@ -8,6 +8,7 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { max-width: 100%; height: auto; }
 
     :root {
       --bg:      #0a0a0f;
@@ -91,51 +92,41 @@
 
     /* ── QUICK ACCESS ── */
     .quick-access {
-      display: flex; flex-wrap: wrap; gap: 12px;
+      display: flex; flex-wrap: wrap; gap: 10px;
       justify-content: center;
-      margin-top: 2.4rem;
+      margin-top: 2.6rem;
       opacity: 0; transform: translateY(16px);
       animation: fadeUp 0.7s 1s cubic-bezier(.22,1,.36,1) forwards;
       position: relative; z-index: 1;
     }
     .qa-btn {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--card);
+      display: flex; align-items: center;
+      background: transparent;
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 10px 18px;
-      text-decoration: none; color: var(--text);
-      font-size: 0.88rem; font-weight: 500;
-      transition: border-color 0.22s, background 0.22s, transform 0.18s, box-shadow 0.22s;
+      border-radius: 4px;
+      padding: 9px 20px;
+      text-decoration: none; color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
       position: relative; overflow: hidden;
     }
-    .qa-btn::before {
-      content: '';
-      position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(124,107,255,0.07), transparent);
-      transition: left 0.4s ease;
-    }
-    .qa-btn:hover::before { left: 150%; }
     .qa-btn:hover {
-      border-color: var(--accent);
-      background: #1a1a28;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 22px rgba(124,107,255,0.14);
+      border-color: var(--accent2);
+      color: var(--accent2);
+      background: rgba(124,107,255,0.05);
     }
     .qa-btn--urgent {
-      border-color: rgba(255,107,107,0.4);
-      color: #ff8a8a;
+      border-color: rgba(255,107,107,0.3);
+      color: rgba(255,138,138,0.7);
     }
     .qa-btn--urgent:hover {
       border-color: #ff8a8a;
-      background: rgba(255,107,107,0.08);
-      box-shadow: 0 6px 22px rgba(255,107,107,0.14);
+      color: #ff8a8a;
+      background: rgba(255,107,107,0.05);
     }
-    .qa-btn--urgent::before {
-      background: linear-gradient(90deg, transparent, rgba(255,107,107,0.07), transparent);
-    }
-    .qa-icon { font-size: 1rem; line-height: 1; }
-    .qa-label { font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.01em; }
+    .qa-label { font-family: 'JetBrains Mono', monospace; }
 
     /* ── HERO ── */
     .hero {
@@ -172,10 +163,11 @@
 
     .hero-badge {
       display: inline-block;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
-      color: var(--accent); border: 1px solid var(--accent);
-      border-radius: 2px; padding: 4px 12px;
-      letter-spacing: 0.1em; margin-bottom: 2rem;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      color: var(--muted); border: 1px solid var(--border);
+      border-radius: 2px; padding: 4px 14px;
+      letter-spacing: 0.14em; margin-bottom: 2.2rem;
+      text-transform: uppercase;
       opacity: 0; transform: translateY(16px);
       animation: fadeUp 0.7s 0.3s cubic-bezier(.22,1,.36,1) forwards;
       position: relative; z-index: 1;
@@ -413,7 +405,38 @@
       padding: 2px 7px; border-radius: 2px; opacity: 0.7;
     }
     .coming-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
-    .coming-card p  { font-size: 0.8rem; color: var(--border); }
+    .coming-card p  { font-size: 0.8rem; color: var(--border); margin-bottom: 14px; }
+
+    .coming-teacher {
+      display: flex; align-items: center; gap: 10px;
+      margin-top: 4px; padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .coming-teacher-img-wrap {
+      width: 56px; height: 56px;
+      min-width: 56px; min-height: 56px;
+      max-width: 56px; max-height: 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      flex-shrink: 0; display: block;
+    }
+    .coming-teacher-img-wrap img {
+      width: 56px; height: 56px;
+      min-width: 56px; min-height: 56px;
+      max-width: 56px; max-height: 56px;
+      object-fit: cover; object-position: center top;
+      display: block; border-radius: 50%;
+    }
+    .coming-teacher-text { display: flex; flex-direction: column; gap: 2px; }
+    .coming-by {
+      font-size: 0.78rem; font-weight: 600; color: var(--muted);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .coming-approved {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem; color: var(--muted); letter-spacing: 0.03em;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -577,41 +600,38 @@
 
     /* ── APK DOWNLOAD ── */
     .gate-apk-btn {
-      margin-top: 14px;
+      margin-top: 12px;
       display: block; width: 100%; text-align: center;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem; font-weight: 600;
-      color: var(--green); text-decoration: none;
-      border: 1px dashed rgba(76,255,170,0.4);
+      font-size: 0.7rem; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border);
       border-radius: 5px; padding: 10px;
-      letter-spacing: 0.04em;
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+      letter-spacing: 0.05em;
+      transition: color 0.2s, border-color 0.2s;
     }
     .gate-apk-btn:hover {
-      background: rgba(76,255,170,0.07);
-      border-color: var(--green);
-      transform: translateY(-1px);
+      color: var(--text);
+      border-color: var(--muted);
     }
 
     .hero-apk-btn {
       display: inline-block;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem; font-weight: 600;
-      color: var(--green); text-decoration: none;
-      border: 1px dashed rgba(76,255,170,0.4);
-      border-radius: 5px; padding: 10px 22px;
-      letter-spacing: 0.05em;
-      margin-top: 16px;
+      font-size: 0.7rem; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 4px; padding: 9px 20px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-top: 14px;
       position: relative; z-index: 1;
       opacity: 0; transform: translateY(12px);
       animation: fadeUp 0.6s 1.15s cubic-bezier(.22,1,.36,1) forwards;
-      transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      transition: color 0.2s, border-color 0.2s;
     }
     .hero-apk-btn:hover {
-      background: rgba(76,255,170,0.07);
-      border-color: var(--green);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(76,255,170,0.15);
+      color: var(--text);
+      border-color: var(--muted);
     }
 
     /* ── TEACHER CREDIT ── */
@@ -619,17 +639,27 @@
       display: flex; flex-direction: column; align-items: center; gap: 8px;
       flex-shrink: 0;
     }
-    .teacher-photo {
-      width: 70px; height: 70px;
+    .teacher-photo-wrap {
+      width: 56px; height: 56px;
+      min-width: 56px; min-height: 56px;
+      max-width: 56px; max-height: 56px;
       border-radius: 50%;
-      object-fit: cover;
+      overflow: hidden;
       border: 2px solid var(--border);
+      flex-shrink: 0;
       transition: border-color 0.25s, box-shadow 0.25s;
     }
-    .english-card:hover .teacher-photo,
-    .ai-card:hover .teacher-photo {
+    .teacher-photo-wrap img {
+      width: 56px; height: 56px;
+      min-width: 56px; min-height: 56px;
+      max-width: 56px; max-height: 56px;
+      object-fit: cover; object-position: center top;
+      display: block; border-radius: 50%;
+    }
+    .english-card:hover .teacher-photo-wrap,
+    .ai-card:hover .teacher-photo-wrap {
       border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(124,107,255,0.15);
+      box-shadow: 0 0 0 3px rgba(124,107,255,0.15);
     }
     .teacher-name {
       font-family: 'JetBrains Mono', monospace;
@@ -649,28 +679,21 @@
       position: relative; overflow: hidden;
       margin-bottom: 16px;
     }
-    .english-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(76,255,170,0.04) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .english-card:hover { border-color: var(--green); box-shadow: 0 10px 36px rgba(76,255,170,0.1); transform: translateY(-2px); }
-    .english-card:hover::after { opacity: 1; }
+    .english-card:hover { border-color: var(--accent); box-shadow: 0 10px 36px rgba(124,107,255,0.1); transform: translateY(-2px); }
     .english-card-left h3 { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
     .english-card-left .eng-sub {
       font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
-      color: var(--green); letter-spacing: 0.08em; margin-bottom: 6px;
+      color: var(--accent2); letter-spacing: 0.08em; margin-bottom: 6px;
     }
     .english-card-left p  { font-size: 0.85rem; color: var(--muted); max-width: 420px; }
     .btn-english {
       font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem;
-      background: transparent; color: var(--green); border: 1px solid var(--green);
+      background: transparent; color: var(--accent2); border: 1px solid var(--border);
       border-radius: 5px; padding: 11px 22px; white-space: nowrap;
       display: inline-block; position: relative; z-index: 1;
-      transition: background 0.18s, color 0.18s, transform 0.18s, box-shadow 0.2s;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
     }
-    .btn-english:hover { background: var(--green); color: var(--bg); transform: translateY(-1px) scale(1.03); box-shadow: 0 6px 20px rgba(76,255,170,0.3); }
+    .btn-english:hover { background: rgba(124,107,255,0.1); border-color: var(--accent2); }
 
     .new-content-banner {
       background: rgba(255,209,102,0.06);
@@ -717,9 +740,14 @@
       display: flex; align-items: center; gap: 10px;
     }
     .sub-teacher-cell img {
-      width: 42px; height: 42px; border-radius: 50%;
-      object-fit: cover; border: 2px solid var(--border);
-      flex-shrink: 0;
+      width: 42px; height: 42px;
+      min-width: 42px; min-height: 42px;
+      max-width: 42px; max-height: 42px;
+      border-radius: 50%;
+      object-fit: cover; object-position: center top;
+      border: 2px solid var(--border);
+      flex-shrink: 0; display: block;
+      overflow: hidden;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
     .upcoming-table tbody tr:hover .sub-teacher-cell img {
@@ -1025,7 +1053,9 @@
     <p class="section-desc reveal">All practical files hosted on Dropbox. Click below to access the full folder.</p>
     <div class="ai-card reveal">
       <div class="teacher-credit">
-        <img src="hemlata.jpg" alt="Hemlata Shreyank Patel" class="teacher-photo"/>
+        <div class="teacher-photo-wrap">
+          <img src="hemlata.jpg" alt="Hemlata Shreyank Patel"/>
+        </div>
         <span class="teacher-name">by Hemlata Shreyank Patel</span>
       </div>
       <div class="ai-card-left">
@@ -1045,7 +1075,9 @@
     <!-- English Live Card -->
     <a class="english-card reveal" href="https://meet-solutions-english.vercel.app/" target="_blank" rel="noopener">
       <div class="teacher-credit">
-        <img src="rumita.jpg" alt="Rumita Rakshit" class="teacher-photo"/>
+        <div class="teacher-photo-wrap">
+          <img src="rumita.jpg" alt="Rumita Rakshit"/>
+        </div>
         <span class="teacher-name">by Rumita Rakshit</span>
       </div>
       <div class="english-card-left">
@@ -1070,10 +1102,28 @@
       <div class="coming-card">
         <h3>Physics Lab Readings</h3>
         <p>Practical readings &amp; observations.</p>
+        <div class="coming-teacher">
+          <div class="coming-teacher-img-wrap">
+            <img src="vivek.jpg" alt="Vivek Hadvani"/>
+          </div>
+          <div class="coming-teacher-text">
+            <span class="coming-by">By Vivek Hadvani</span>
+            <span class="coming-approved">Approved by Astik or Vivek</span>
+          </div>
+        </div>
       </div>
       <div class="coming-card">
         <h3>Chemistry Lab Readings</h3>
         <p>Titrations, practicals &amp; viva prep.</p>
+        <div class="coming-teacher">
+          <div class="coming-teacher-img-wrap">
+            <img src="manjusha.jpg" alt="Manjusha Warrier"/>
+          </div>
+          <div class="coming-teacher-text">
+            <span class="coming-by">By Manjusha Warrier</span>
+            <span class="coming-approved">Approved by Shreedhala</span>
+          </div>
+        </div>
       </div>
       <div class="coming-card">
         <h3>More…</h3>
