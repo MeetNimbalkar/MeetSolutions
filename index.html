@@ -17,6 +17,8 @@
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:image" content="https://meet-solutions.vercel.app/logo.png"/>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('vWzSiB-MVagcoQD_Q');</script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -450,6 +452,49 @@
       font-size: 0.63rem; color: var(--muted); letter-spacing: 0.03em;
     }
 
+    /* ── CONTACT FORM ── */
+    .form-group { margin-bottom: 18px; }
+    .form-label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; font-weight: 700;
+      color: var(--accent); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.88rem;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input::placeholder { color: var(--muted); }
+    .form-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124,107,255,0.12);
+    }
+    .form-textarea {
+      resize: vertical; min-height: 90px;
+    }
+    .form-submit {
+      width: 100%;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 5px;
+      padding: 13px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      cursor: pointer; letter-spacing: 0.02em;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 4px;
+    }
+    .form-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
@@ -867,7 +912,7 @@
                onkeydown="if(event.key==='Enter') attemptUnlock()" autocomplete="off" spellcheck="false"/>
         <button class="gate-eye" id="eyeBtn" onclick="toggleEye()" title="Show/Hide">👁</button>
       </div>
-      <div class="gate-error" id="gateError">Incorrect access key entered or the owner might have changed it.</div>
+      <div class="gate-error" id="gateError">Incorrect access key entered.</div>
 
       <button class="gate-btn" onclick="attemptUnlock()">Unlock &rarr;</button>
       <a class="gate-apk-btn" href="MeetSol^n.apk" download>
@@ -897,7 +942,7 @@
     <div class="hero-badge">PERSONAL SOLUTION VAULT</div>
     <div class="hero-logo">Meet<span>Sol</span><sup>n</sup></div>
     <p class="hero-tagline">
-      All solutions, notes &amp; practicals — curated by Meet Nimbalkar.<br/>
+      All solutions, notes &amp; practicals — curated by Meet.<br/>
       <em>Stop texting. Start browsing.</em>
     </p>
 
@@ -1223,13 +1268,57 @@
   <section class="section" id="updates">
     <div class="section-label reveal">05 / Updates</div>
     <h2 class="section-title reveal">Latest Updates</h2>
-    <p class="section-desc reveal">Nisuuu Broo!.</p>
+    <p class="section-desc reveal">meetuupdatesxyz</p>
+  </section>
+
+  <!-- CONTACT FORM SECTION -->
+  <section class="section" id="contact">
+    <div class="section-label reveal">06 / Contact</div>
+    <h2 class="section-title reveal">Get in Touch</h2>
+    <p class="section-desc reveal">Have a doubt or want to request something? Drop your details below.</p>
+
+    <div class="reveal" style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding: 32px 28px; max-width:520px;">
+      <div id="form-success" style="display:none; text-align:center; padding: 20px 0;">
+        <div style="font-size:2rem; margin-bottom:12px;">✅</div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:var(--accent2);">Message sent successfully!</div>
+        <div style="font-size:0.8rem; color:var(--muted); margin-top:6px;">Meet will get back to you soon.</div>
+      </div>
+
+      <div id="contact-form">
+
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input class="form-input" type="text" id="f-name" placeholder="Your full name" required/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" id="f-email" placeholder="yourname@email.com" required/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Mobile Number</label>
+          <input class="form-input" type="tel" id="f-mobile" placeholder="+91 XXXXX XXXXX" required/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Message <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
+          <textarea class="form-input form-textarea" id="f-message" placeholder="Your doubt or request..."></textarea>
+        </div>
+
+        <div id="form-error" style="display:none; font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#ff8a8a; margin-bottom:14px;"></div>
+
+        <button class="form-submit" id="f-submit" onclick="submitForm()">
+          <span id="f-btn-text">Send Message →</span>
+        </button>
+      </div>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="reveal">
     <p class="footer-dev">Proudly developed by <span>Meet Nimbalkar</span></p>
-    <p class="footer-secret"><strong>Rumita Ji must not know this !!</strong></p>
+    <p class="footer-secret"><strong>Rumita must not know this !!</strong></p>
   </footer>
 
   <!-- PDF MODAL -->
@@ -1248,7 +1337,7 @@
 
   <script>
     /* ── ACCESS GATE ── */
-    const CORRECT_KEY = 'VIVEKDOLU';
+    const CORRECT_KEY = 'RUMITA';
 
     function toggleEye() {
       const inp = document.getElementById('gateInput');
@@ -1347,6 +1436,42 @@
     }
     function closeModal(e) { if (e.target.id === 'pdfModal') closePDF(); }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closePDF(); });
+
+    /* ── WEB3FORMS SUBMIT ── */
+    /* ── EMAILJS SUBMIT ── */
+    async function submitForm() {
+      const name    = document.getElementById('f-name').value.trim();
+      const email   = document.getElementById('f-email').value.trim();
+      const mobile  = document.getElementById('f-mobile').value.trim();
+      const message = document.getElementById('f-message').value.trim() || '—';
+      const errEl   = document.getElementById('form-error');
+      const btn     = document.getElementById('f-submit');
+      const btnText = document.getElementById('f-btn-text');
+
+      errEl.style.display = 'none';
+
+      if (!name || !email || !mobile) {
+        errEl.textContent = 'Please fill in all required fields.';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btnText.textContent = 'Sending...';
+
+      try {
+        await emailjs.send('service_gknsd9k', 'template_6ocnmyi', {
+          name, email, mobile, message
+        });
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } catch {
+        errEl.textContent = 'Something went wrong. Please try again.';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btnText.textContent = 'Send Message →';
+      }
+    }
   </script>
 
 </body>
