@@ -1,1478 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MeetSolⁿ</title>
-  <link rel="icon" type="image/png" href="logo.png"/>
-  <link rel="apple-touch-icon" href="logo.png"/>
-  <!-- Open Graph / Link Preview -->
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="https://meet-solutions.vercel.app/"/>
-  <meta property="og:title" content="MeetSolⁿ — Personal Solution Vault"/>
-  <meta property="og:description" content="All Maths solutions, AI practicals & English notes by Meet Nimbalkar."/>
-  <meta property="og:image" content="https://meet-solutions.vercel.app/logo.png"/>
-  <meta property="og:image:width" content="512"/>
-  <meta property="og:image:height" content="512"/>
-  <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:image" content="https://meet-solutions.vercel.app/logo.png"/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>emailjs.init('vWzSiB-MVagcoQD_Q');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official Institutional Service Advisory - System Deployment Pending Assessment Clearance.">
+    <title>Service Advisory | System Status</title>
+    <style>
+        :root {
+            --bg-primary: #0a0f1d;
+            --bg-secondary: #111827;
+            --card-bg: rgba(17, 24, 39, 0.85);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-border-hover: rgba(59, 130, 246, 0.3);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-primary: #3b82f6;
+            --accent-light: rgba(59, 130, 246, 0.12);
+            --accent-amber: #f59e0b;
+            --accent-amber-light: rgba(245, 158, 11, 0.12);
+            --accent-emerald: #10b981;
+            --accent-emerald-light: rgba(16, 185, 129, 0.12);
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", Arial, sans-serif;
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+            --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    img { max-width: 100%; height: auto; }
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    :root {
-      --bg:      #0a0a0f;
-      --surface: #111118;
-      --card:    #16161f;
-      --border:  #22223a;
-      --accent:  #7c6bff;
-      --accent2: #b8aaff;
-      --text:    #e8e8f0;
-      --muted:   #6b6b88;
-      --green:   #4cffaa;
-      --warning: #ffd166;
-    }
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 1.25rem;
+            position: relative;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    html { scroll-behavior: smooth; }
+        /* Ambient background glow effects */
+        .bg-glow-top {
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(10, 15, 29, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+        .bg-glow-bottom {
+            position: absolute;
+            bottom: -150px;
+            right: 10%;
+            width: 500px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(10, 15, 29, 0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    /* ── CURSOR GLOW ── */
-    .cursor-glow {
-      position: fixed;
-      width: 320px; height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,107,255,0.07) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-      transform: translate(-50%, -50%);
-      transition: left 0.12s ease, top 0.12s ease;
-    }
+        /* Header / Institutional Branding */
+        .header {
+            width: 100%;
+            max-width: 760px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            z-index: 1;
+            animation: fadeIn 0.8s ease-out;
+        }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,10,15,0.0);
-      backdrop-filter: blur(0px);
-      border-bottom: 1px solid transparent;
-      padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 60px;
-      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
-    }
-    nav.scrolled {
-      background: rgba(10,10,15,0.88);
-      backdrop-filter: blur(14px);
-      border-bottom-color: var(--border);
-    }
-    .nav-logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.1rem; font-weight: 700;
-      color: var(--accent); letter-spacing: -0.5px;
-      opacity: 0; transform: translateY(-8px);
-      animation: fadeDown 0.6s 0.2s forwards;
-    }
-    .nav-logo sup { font-size: 0.6rem; color: var(--accent2); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links li { opacity: 0; transform: translateY(-8px); }
-    .nav-links li:nth-child(1) { animation: fadeDown 0.6s 0.35s forwards; }
-    .nav-links li:nth-child(2) { animation: fadeDown 0.6s 0.45s forwards; }
-    .nav-links li:nth-child(3) { animation: fadeDown 0.6s 0.55s forwards; }
-    .nav-links li:nth-child(4) { animation: fadeDown 0.6s 0.65s forwards; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none;
-      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.02em;
-      position: relative; padding-bottom: 2px; transition: color 0.2s;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; bottom: 0; left: 0;
-      width: 0; height: 1px; background: var(--accent);
-      transition: width 0.25s ease;
-    }
-    .nav-links a:hover { color: var(--text); }
-    .nav-links a:hover::after { width: 100%; }
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
 
-    /* ── QUICK ACCESS ── */
-    .quick-access {
-      display: flex; flex-wrap: wrap; gap: 10px;
-      justify-content: center;
-      margin-top: 2.6rem;
-      opacity: 0; transform: translateY(16px);
-      animation: fadeUp 0.7s 1s cubic-bezier(.22,1,.36,1) forwards;
-      position: relative; z-index: 1;
-    }
-    .qa-btn {
-      display: flex; align-items: center;
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 9px 20px;
-      text-decoration: none; color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-      position: relative; overflow: hidden;
-    }
-    .qa-btn:hover {
-      border-color: var(--accent2);
-      color: var(--accent2);
-      background: rgba(124,107,255,0.05);
-    }
-    .qa-btn--urgent {
-      border-color: rgba(255,107,107,0.3);
-      color: rgba(255,138,138,0.7);
-    }
-    .qa-btn--urgent:hover {
-      border-color: #ff8a8a;
-      color: #ff8a8a;
-      background: rgba(255,107,107,0.05);
-    }
-    .qa-label { font-family: 'JetBrains Mono', monospace; }
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 100px 2rem 60px;
-      text-align: center;
-      position: relative; overflow: hidden;
-    }
-    /* animated ambient orb */
-    .hero-orb {
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 70% 50% at 50% 40%, rgba(124,107,255,0.13) 0%, transparent 70%);
-      animation: orbPulse 6s ease-in-out infinite;
-    }
-    @keyframes orbPulse {
-      0%,100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.6; transform: scale(1.08); }
-    }
+        .brand-logo svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffffff;
+        }
 
-    /* floating particles */
-    .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-    .particle {
-      position: absolute; border-radius: 50%;
-      background: var(--accent); opacity: 0;
-      animation: floatUp linear infinite;
-    }
-    @keyframes floatUp {
-      0%   { opacity: 0; transform: translateY(0) scale(0.5); }
-      10%  { opacity: 0.5; }
-      90%  { opacity: 0.2; }
-      100% { opacity: 0; transform: translateY(-100vh) scale(1); }
-    }
+        .brand-text {
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--text-primary);
+            text-transform: uppercase;
+        }
 
-    .hero-badge {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
-      color: var(--muted); border: 1px solid var(--border);
-      border-radius: 2px; padding: 4px 14px;
-      letter-spacing: 0.14em; margin-bottom: 2.2rem;
-      text-transform: uppercase;
-      opacity: 0; transform: translateY(16px);
-      animation: fadeUp 0.7s 0.3s cubic-bezier(.22,1,.36,1) forwards;
-      position: relative; z-index: 1;
-    }
-    .hero-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(4rem, 12vw, 9rem);
-      font-weight: 900; line-height: 1; letter-spacing: -3px;
-      color: var(--text); margin-bottom: 0.2rem;
-      opacity: 0; transform: translateY(24px);
-      animation: fadeUp 0.8s 0.5s cubic-bezier(.22,1,.36,1) forwards;
-      position: relative; z-index: 1;
-    }
-    .hero-logo span { color: var(--accent); }
-    .hero-logo sup {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.3em; color: var(--accent2);
-      vertical-align: super; letter-spacing: 0;
-    }
-    .hero-tagline {
-      font-size: 1rem; color: var(--muted); font-weight: 400;
-      margin-top: 1.2rem; max-width: 380px; line-height: 1.7;
-      opacity: 0; transform: translateY(16px);
-      animation: fadeUp 0.7s 0.75s cubic-bezier(.22,1,.36,1) forwards;
-      position: relative; z-index: 1;
-    }
-    .hero-tagline em { color: var(--accent2); font-style: normal; }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.8rem;
+            background: var(--accent-amber-light);
+            border: 1px solid rgba(245, 158, 11, 0.25);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-amber);
+            letter-spacing: 0.02em;
+        }
 
-    .scroll-hint {
-      position: absolute; bottom: 2.5rem; z-index: 1;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
-      color: var(--muted); letter-spacing: 0.12em;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      opacity: 0; animation: fadeUp 0.6s 1.2s forwards;
-    }
-    .scroll-hint::after {
-      content: ''; width: 1px; height: 40px;
-      background: linear-gradient(to bottom, var(--muted), transparent);
-      animation: scrollPulse 2s 1.8s ease-in-out infinite;
-    }
-    @keyframes scrollPulse {
-      0%,100% { opacity: 1; transform: scaleY(1); }
-      50%      { opacity: 0.3; transform: scaleY(0.5); }
-    }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background-color: var(--accent-amber);
+            border-radius: 50%;
+            position: relative;
+        }
 
-    /* ── KEYFRAMES ── */
-    @keyframes fadeUp   { to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeDown { to { opacity: 1; transform: translateY(0); } }
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background-color: var(--accent-amber);
+            opacity: 0.4;
+            animation: pulse 2s infinite ease-in-out;
+        }
 
-    /* ── SCROLL REVEAL ── */
-    .reveal {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+        /* Main Announcement Container */
+        .main-wrapper {
+            width: 100%;
+            max-width: 760px;
+            margin: auto;
+            padding: 2.5rem 0;
+            z-index: 1;
+            animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-    /* stagger children */
-    .stagger-children > * {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.5s cubic-bezier(.22,1,.36,1), transform 0.5s cubic-bezier(.22,1,.36,1);
-    }
-    .stagger-children.visible > *:nth-child(1)  { transition-delay: 0.04s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(2)  { transition-delay: 0.08s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(3)  { transition-delay: 0.12s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(4)  { transition-delay: 0.16s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(5)  { transition-delay: 0.20s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(6)  { transition-delay: 0.24s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(7)  { transition-delay: 0.28s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(8)  { transition-delay: 0.32s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(9)  { transition-delay: 0.36s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(10) { transition-delay: 0.40s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(11) { transition-delay: 0.44s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(12) { transition-delay: 0.48s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(13) { transition-delay: 0.52s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(14) { transition-delay: 0.56s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(15) { transition-delay: 0.60s; opacity:1; transform:translateY(0); }
-    .stagger-children.visible > *:nth-child(16) { transition-delay: 0.64s; opacity:1; transform:translateY(0); }
+        .announcement-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            box-shadow: var(--shadow-card);
+            text-align: center;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
 
-    /* ── SECTIONS ── */
-    .section {
-      max-width: 860px; margin: 0 auto;
-      padding: 80px 2rem;
-      border-top: 1px solid var(--border);
-    }
-    .section-label {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
-      color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase;
-      margin-bottom: 0.8rem;
-    }
-    .section-title {
-      font-size: 1.9rem; font-weight: 700; color: var(--text);
-      margin-bottom: 0.5rem; letter-spacing: -0.5px;
-    }
-    .section-desc { color: var(--muted); font-size: 0.9rem; margin-bottom: 2.5rem; max-width: 500px; }
+        .announcement-card:hover {
+            border-color: var(--card-border-hover);
+        }
 
-    /* ── CHAPTER GRID ── */
-    .chapter-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 12px;
-    }
-    .chapter-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px; padding: 16px 18px;
-      cursor: pointer;
-      display: flex; align-items: flex-start; gap: 12px;
-      position: relative; overflow: hidden;
-      transition: border-color 0.25s, background 0.25s, transform 0.2s, box-shadow 0.25s;
-    }
-    /* shimmer sweep on hover */
-    .chapter-card::before {
-      content: '';
-      position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(124,107,255,0.06), transparent);
-      transition: left 0.45s ease;
-    }
-    .chapter-card:hover::before { left: 150%; }
-    .chapter-card:hover {
-      border-color: var(--accent);
-      background: #1a1a28;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(124,107,255,0.12);
-    }
-    .chapter-num {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
-      color: var(--accent); min-width: 22px; margin-top: 2px; opacity: 0.8;
-    }
-    .chapter-name {
-      font-size: 0.88rem; font-weight: 500; color: var(--text); line-height: 1.4;
-    }
-    .chapter-actions {
-      margin-left: auto; display: flex; gap: 8px; align-items: center; flex-shrink: 0;
-    }
-    .btn-view, .btn-dl {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
-      padding: 4px 9px; border-radius: 3px; cursor: pointer;
-      text-decoration: none; border: 1px solid;
-      transition: background 0.18s, color 0.18s, transform 0.15s;
-    }
-    .btn-view { color: var(--accent2); border-color: var(--accent2); background: transparent; }
-    .btn-view:hover { background: var(--accent2); color: var(--bg); transform: scale(1.06); }
-    .btn-dl   { color: var(--muted); border-color: var(--border); background: transparent; }
-    .btn-dl:hover { border-color: var(--green); color: var(--green); transform: scale(1.06); }
+        /* Status Icon */
+        .icon-wrapper {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 1.75rem;
+            background: var(--accent-light);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary);
+        }
 
-    /* ── MODAL ── */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 200;
-      background: rgba(0,0,0,0); backdrop-filter: blur(0px);
-      align-items: center; justify-content: center;
-      transition: background 0.3s, backdrop-filter 0.3s;
-    }
-    .modal-overlay.active {
-      display: flex;
-      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
-      animation: modalFadeIn 0.3s forwards;
-    }
-    @keyframes modalFadeIn {
-      from { background: rgba(0,0,0,0); backdrop-filter: blur(0px); }
-      to   { background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-    }
-    .modal-box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 8px; width: min(95vw, 900px); height: 90vh;
-      display: flex; flex-direction: column; overflow: hidden;
-      transform: scale(0.93) translateY(16px); opacity: 0;
-      transition: transform 0.35s cubic-bezier(.22,1,.36,1), opacity 0.35s;
-    }
-    .modal-overlay.active .modal-box {
-      transform: scale(1) translateY(0); opacity: 1;
-    }
-    .modal-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0;
-    }
-    .modal-title { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent2); }
-    .modal-actions { display: flex; gap: 10px; align-items: center; }
-    .modal-dl {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
-      color: var(--green); border: 1px solid var(--green);
-      background: transparent; padding: 5px 12px; border-radius: 3px;
-      cursor: pointer; text-decoration: none;
-      transition: background 0.18s, color 0.18s, transform 0.15s;
-    }
-    .modal-dl:hover { background: var(--green); color: var(--bg); transform: scale(1.04); }
-    .modal-close {
-      font-size: 1.1rem; cursor: pointer; color: var(--muted);
-      background: none; border: none; line-height: 1; padding: 4px 8px; border-radius: 3px;
-      transition: color 0.15s, transform 0.2s;
-    }
-    .modal-close:hover { color: var(--text); transform: rotate(90deg); }
-    iframe.pdf-frame { flex: 1; border: none; background: #1a1a1a; }
+        .icon-wrapper svg {
+            width: 32px;
+            height: 32px;
+        }
 
-    /* ── AI CARD ── */
-    .ai-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 6px; padding: 28px 24px;
-      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
-      position: relative; overflow: hidden;
-    }
-    .ai-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(124,107,255,0.04) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .ai-card:hover { border-color: var(--accent); box-shadow: 0 10px 36px rgba(124,107,255,0.14); transform: translateY(-2px); }
-    .ai-card:hover::after { opacity: 1; }
-    .ai-card-left h3 { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-    .ai-card-left p  { font-size: 0.85rem; color: var(--muted); max-width: 420px; }
-    .btn-primary {
-      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem;
-      background: var(--accent); color: #fff; border: none; border-radius: 5px;
-      padding: 11px 22px; cursor: pointer; text-decoration: none; white-space: nowrap;
-      display: inline-block; position: relative; z-index: 1;
-      transition: opacity 0.2s, transform 0.18s, box-shadow 0.2s;
-    }
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px) scale(1.03); box-shadow: 0 6px 20px rgba(124,107,255,0.35); }
+        /* Typography */
+        .pre-heading {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
 
-    /* ── COMING SOON ── */
-    .coming-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .coming-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 6px; padding: 22px 20px;
-      position: relative; overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .coming-card:hover { border-color: rgba(255,209,102,0.35); transform: translateY(-1px); }
-    .coming-card::before {
-      content: 'SOON';
-      position: absolute; top: 12px; right: 14px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
-      color: var(--warning); border: 1px solid var(--warning);
-      padding: 2px 7px; border-radius: 2px; opacity: 0.7;
-    }
-    .coming-card h3 { font-size: 0.95rem; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
-    .coming-card p  { font-size: 0.8rem; color: var(--border); margin-bottom: 14px; }
+        .main-heading {
+            font-size: 1.875rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
+        }
 
-    .coming-teacher {
-      display: flex; align-items: center; gap: 10px;
-      margin-top: 4px; padding-top: 12px;
-      border-top: 1px solid var(--border);
-    }
-    .coming-teacher-img-wrap {
-      width: 56px; height: 56px;
-      min-width: 56px; min-height: 56px;
-      max-width: 56px; max-height: 56px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      flex-shrink: 0; display: block;
-    }
-    .coming-teacher-img-wrap img {
-      width: 56px; height: 56px;
-      min-width: 56px; min-height: 56px;
-      max-width: 56px; max-height: 56px;
-      object-fit: cover; object-position: center top;
-      display: block; border-radius: 50%;
-    }
-    .coming-teacher-text { display: flex; flex-direction: column; gap: 2px; }
-    .coming-by {
-      font-size: 0.78rem; font-weight: 600; color: var(--muted);
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    .coming-approved {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.63rem; color: var(--muted); letter-spacing: 0.03em;
-    }
+        .lead-statement {
+            font-size: 1.125rem;
+            line-height: 1.6;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
 
-    /* ── CONTACT FORM ── */
-    .form-group { margin-bottom: 18px; }
-    .form-label {
-      display: block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; font-weight: 700;
-      color: var(--accent); letter-spacing: 0.1em;
-      text-transform: uppercase; margin-bottom: 8px;
-    }
-    .form-input {
-      width: 100%;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      color: var(--text);
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.88rem;
-      padding: 11px 14px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-input::placeholder { color: var(--muted); }
-    .form-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(124,107,255,0.12);
-    }
-    .form-textarea {
-      resize: vertical; min-height: 90px;
-    }
-    .form-submit {
-      width: 100%;
-      background: var(--accent); color: #fff;
-      border: none; border-radius: 5px;
-      padding: 13px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.9rem; font-weight: 700;
-      cursor: pointer; letter-spacing: 0.02em;
-      transition: opacity 0.2s, transform 0.15s;
-      margin-top: 4px;
-    }
-    .form-submit:hover { opacity: 0.88; transform: translateY(-1px); }
-    .form-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            margin: 2rem 0;
+        }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 40px 2rem; text-align: center;
-      max-width: 860px; margin: 0 auto;
-    }
-    .footer-dev  { font-size: 0.8rem; color: var(--muted); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; }
-    .footer-dev span { color: var(--accent2); }
-    .footer-secret { font-size: 0.82rem; color: var(--text); font-weight: 700; letter-spacing: 0.01em; }
+        /* Institutional Notice / Humour Grid */
+        .audit-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
 
-    /* ── PAGE LOADER ── */
-    #loader {
-      position: fixed; inset: 0; z-index: 999;
-      background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 20px;
-      transition: opacity 0.5s, visibility 0.5s;
-    }
-    #loader.hidden { opacity: 0; visibility: hidden; }
-    .loader-logo {
-      font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900;
-      color: var(--text); letter-spacing: -2px;
-      animation: loaderPop 0.5s 0.1s cubic-bezier(.22,1,.36,1) both;
-    }
-    .loader-logo span { color: var(--accent); }
-    .loader-logo sup { font-family: 'JetBrains Mono', monospace; font-size: 0.3em; color: var(--accent2); vertical-align: super; }
-    @keyframes loaderPop {
-      from { opacity: 0; transform: scale(0.85); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-    .loader-bar {
-      width: 180px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden;
-    }
-    .loader-fill {
-      height: 100%; background: var(--accent); border-radius: 2px;
-      animation: loaderFill 1s 0.3s cubic-bezier(.4,0,.2,1) forwards;
-      width: 0;
-    }
-    @keyframes loaderFill { to { width: 100%; } }
+        .audit-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .chapter-grid { grid-template-columns: 1fr; }
-      .coming-grid  { grid-template-columns: 1fr; }
-      .hero-logo    { letter-spacing: -2px; }
-      .nav-links    { gap: 1rem; }
-    }
+        .audit-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: translateY(-2px);
+        }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-    }
+        .audit-card-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
 
-    /* ── ACCESS GATE ── */
-    #accessGate {
-      position: fixed; inset: 0; z-index: 9999;
-      background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column;
-      animation: gateFadeIn 0.5s ease forwards;
-    }
-    @keyframes gateFadeIn { from { opacity:0; } to { opacity:1; } }
-    #accessGate.unlocking {
-      animation: gateSlideOut 0.6s 0.1s cubic-bezier(.4,0,.2,1) forwards;
-    }
-    @keyframes gateSlideOut {
-      0%   { opacity:1; transform: scale(1); }
-      100% { opacity:0; transform: scale(1.04); pointer-events:none; }
-    }
+        .audit-card-title svg {
+            width: 14px;
+            height: 14px;
+            color: var(--accent-primary);
+        }
 
-    .gate-inner {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 44px 40px;
-      width: min(92vw, 420px);
-      display: flex; flex-direction: column; align-items: center; gap: 0;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
-      animation: gateCardPop 0.6s 0.15s cubic-bezier(.22,1,.36,1) both;
-    }
-    @keyframes gateCardPop {
-      from { opacity:0; transform: translateY(28px) scale(0.97); }
-      to   { opacity:1; transform: translateY(0) scale(1); }
-    }
+        .audit-card-desc {
+            font-size: 0.875rem;
+            line-height: 1.45;
+            color: var(--text-secondary);
+        }
 
-    .gate-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem; font-weight: 900;
-      color: var(--text); letter-spacing: -2px;
-      margin-bottom: 6px;
-    }
-    .gate-logo span { color: var(--accent); }
-    .gate-logo sup  { font-family: 'JetBrains Mono', monospace; font-size: 0.3em; color: var(--accent2); vertical-align: super; }
+        .audit-card-desc strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
 
-    .gate-sub {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem; color: var(--muted);
-      letter-spacing: 0.12em; text-transform: uppercase;
-      margin-bottom: 32px;
-    }
+        /* Owner / Management Disclaimer Box */
+        .executive-memo {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid var(--accent-primary);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-size: 0.8125rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
 
-    .gate-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; color: var(--accent);
-      letter-spacing: 0.1em; text-transform: uppercase;
-      align-self: flex-start; margin-bottom: 8px; width: 100%;
-    }
+        .executive-memo span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
 
-    .gate-input-wrap {
-      width: 100%; position: relative; margin-bottom: 18px;
-    }
-    .gate-input {
-      width: 100%;
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 5px; color: var(--text);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1rem; letter-spacing: 0.15em;
-      padding: 12px 44px 12px 16px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .gate-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(124,107,255,0.15); }
-    .gate-input.error { border-color: #ff6b6b; animation: shake 0.4s; }
-    @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      20%      { transform: translateX(-7px); }
-      40%      { transform: translateX(7px); }
-      60%      { transform: translateX(-5px); }
-      80%      { transform: translateX(4px); }
-    }
-    .gate-eye {
-      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-      background: none; border: none; cursor: pointer;
-      color: var(--muted); font-size: 1rem; line-height: 1;
-      transition: color 0.15s;
-    }
-    .gate-eye:hover { color: var(--accent2); }
+        /* Footer */
+        .footer {
+            width: 100%;
+            max-width: 760px;
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+            z-index: 1;
+            animation: fadeIn 1s ease-out;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
 
-    .gate-error {
-      width: 100%;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; color: #ff6b6b;
-      margin-top: -10px; margin-bottom: 16px;
-      min-height: 1em;
-      opacity: 0; transform: translateY(-4px);
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .gate-error.show { opacity: 1; transform: translateY(0); }
+        .footer-compliance {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
 
-    .gate-btn {
-      width: 100%;
-      background: var(--accent); color: #fff; border: none;
-      border-radius: 5px; padding: 13px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.9rem; font-weight: 700;
-      cursor: pointer; letter-spacing: 0.03em;
-      transition: opacity 0.2s, transform 0.18s, box-shadow 0.2s;
-    }
-    .gate-btn:hover { opacity: 0.88; transform: translateY(-1px); box-shadow: 0 6px 22px rgba(124,107,255,0.35); }
-    .gate-btn:active { transform: translateY(0); }
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
-    /* ── APK DOWNLOAD ── */
-    .gate-apk-btn {
-      margin-top: 12px;
-      display: block; width: 100%; text-align: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; font-weight: 500;
-      color: var(--muted); text-decoration: none;
-      border: 1px solid var(--border);
-      border-radius: 5px; padding: 10px;
-      letter-spacing: 0.05em;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .gate-apk-btn:hover {
-      color: var(--text);
-      border-color: var(--muted);
-    }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .hero-apk-btn {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem; font-weight: 500;
-      color: var(--muted); text-decoration: none;
-      border: 1px solid var(--border);
-      border-radius: 4px; padding: 9px 20px;
-      letter-spacing: 0.06em; text-transform: uppercase;
-      margin-top: 14px;
-      position: relative; z-index: 1;
-      opacity: 0; transform: translateY(12px);
-      animation: fadeUp 0.6s 1.15s cubic-bezier(.22,1,.36,1) forwards;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .hero-apk-btn:hover {
-      color: var(--text);
-      border-color: var(--muted);
-    }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
 
-    /* ── TEACHER CREDIT ── */
-    .teacher-credit {
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      flex-shrink: 0;
-    }
-    .teacher-photo-wrap {
-      width: 56px; height: 56px;
-      min-width: 56px; min-height: 56px;
-      max-width: 56px; max-height: 56px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid var(--border);
-      flex-shrink: 0;
-      transition: border-color 0.25s, box-shadow 0.25s;
-    }
-    .teacher-photo-wrap img {
-      width: 56px; height: 56px;
-      min-width: 56px; min-height: 56px;
-      max-width: 56px; max-height: 56px;
-      object-fit: cover; object-position: center top;
-      display: block; border-radius: 50%;
-    }
-    .english-card:hover .teacher-photo-wrap,
-    .ai-card:hover .teacher-photo-wrap {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(124,107,255,0.15);
-    }
-    .teacher-name {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.6rem; color: var(--muted);
-      text-align: center; white-space: nowrap;
-      letter-spacing: 0.04em;
-    }
+        /* Responsive Breakpoints */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.25rem 1rem;
+            }
 
-    /* ── ENGLISH CARD ── */
-    .english-card {
-      background: var(--card); border: 1px solid var(--border);
-      border-radius: 6px; padding: 28px 24px;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
-      text-decoration: none; color: inherit;
-      transition: border-color 0.25s, box-shadow 0.25s, transform 0.2s;
-      position: relative; overflow: hidden;
-      margin-bottom: 16px;
-    }
-    .english-card:hover { border-color: var(--accent); box-shadow: 0 10px 36px rgba(124,107,255,0.1); transform: translateY(-2px); }
-    .english-card-left h3 { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-    .english-card-left .eng-sub {
-      font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
-      color: var(--accent2); letter-spacing: 0.08em; margin-bottom: 6px;
-    }
-    .english-card-left p  { font-size: 0.85rem; color: var(--muted); max-width: 420px; }
-    .btn-english {
-      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem;
-      background: transparent; color: var(--accent2); border: 1px solid var(--border);
-      border-radius: 5px; padding: 11px 22px; white-space: nowrap;
-      display: inline-block; position: relative; z-index: 1;
-      transition: background 0.18s, color 0.18s, border-color 0.18s;
-    }
-    .btn-english:hover { background: rgba(124,107,255,0.1); border-color: var(--accent2); }
+            .announcement-card {
+                padding: 2.25rem 1.25rem;
+            }
 
-    .new-content-banner {
-      background: rgba(255,209,102,0.06);
-      border: 1px solid rgba(255,209,102,0.25);
-      border-radius: 5px; padding: 12px 16px;
-      display: flex; align-items: flex-start; gap: 10px;
-      margin-bottom: 0;
-    }
-    .new-content-banner .banner-icon {
-      font-size: 1rem; flex-shrink: 0; margin-top: 1px;
-    }
-    .new-content-banner .banner-text { font-size: 0.82rem; color: var(--warning); line-height: 1.5; }
-    .new-content-banner .banner-text strong { display: block; font-weight: 700; margin-bottom: 2px; }
-    /* ── UPCOMING SUBMISSIONS TABLE ── */
-    .upcoming-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
-    .upcoming-table thead tr {
-      border-bottom: 1px solid var(--border);
-    }
-    .upcoming-table th {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem; font-weight: 700;
-      color: var(--accent); letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 10px 16px;
-      text-align: left;
-    }
-    .upcoming-table tbody tr {
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
-    }
-    .upcoming-table tbody tr:hover { background: #1a1a28; }
-    .upcoming-table tbody tr:last-child { border-bottom: none; }
-    .upcoming-table td {
-      padding: 16px;
-      vertical-align: middle;
-      color: var(--text);
-    }
+            .main-heading {
+                font-size: 1.45rem;
+            }
 
-    .sub-teacher-cell {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .sub-teacher-cell img {
-      width: 42px; height: 42px;
-      min-width: 42px; min-height: 42px;
-      max-width: 42px; max-height: 42px;
-      border-radius: 50%;
-      object-fit: cover; object-position: center top;
-      border: 2px solid var(--border);
-      flex-shrink: 0; display: block;
-      overflow: hidden;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .upcoming-table tbody tr:hover .sub-teacher-cell img {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(124,107,255,0.15);
-    }
-    .sub-teacher-cell span {
-      font-size: 0.8rem; color: var(--muted);
-      font-family: 'JetBrains Mono', monospace;
-      line-height: 1.3;
-    }
+            .lead-statement {
+                font-size: 1rem;
+                padding: 0;
+            }
 
-    .sub-title { font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .sub-type  { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); }
+            .audit-grid {
+                grid-template-columns: 1fr;
+            }
 
-    .deadline-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,107,107,0.1);
-      border: 1px solid rgba(255,107,107,0.35);
-      color: #ff8a8a;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem; font-weight: 700;
-      padding: 4px 10px; border-radius: 3px;
-      white-space: nowrap;
-    }
-    .deadline-badge::before { content: '⏰'; font-size: 0.7rem; }
-
-    .sub-actions { display: flex; gap: 8px; align-items: center; }
-
-    @keyframes deadlinePulse {
-      0%,100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
-      50%      { box-shadow: 0 0 0 4px rgba(255,107,107,0.15); }
-    }
-    .deadline-badge { animation: deadlinePulse 2.5s ease-in-out infinite; }
-
-    /* ── MOBILE CARD (hidden on desktop) ── */
-    .upcoming-mobile { display: none; }
-
-    @media (max-width: 640px) {
-      .upcoming-table-wrap { display: none; }
-      .upcoming-mobile { display: flex; flex-direction: column; gap: 0; }
-
-      .upcoming-mobile-row {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 18px 16px;
-        display: flex; flex-direction: column; gap: 14px;
-      }
-
-      .umr-top {
-        display: flex; align-items: center; gap: 12px;
-      }
-      .umr-num {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.65rem; color: var(--muted); flex-shrink: 0;
-      }
-      .umr-title-block { flex: 1; }
-      .umr-title { font-weight: 600; font-size: 0.95rem; color: var(--text); margin-bottom: 2px; }
-      .umr-type  { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--muted); }
-
-      .umr-teacher {
-        display: flex; align-items: center; gap: 10px;
-        padding: 10px 12px;
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 6px;
-      }
-      .umr-teacher img {
-        width: 38px; height: 38px; border-radius: 50%;
-        object-fit: cover; border: 2px solid var(--border); flex-shrink: 0;
-      }
-      .umr-teacher span {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.72rem; color: var(--muted); line-height: 1.4;
-      }
-
-      .umr-deadline { }
-
-      .umr-actions {
-        display: flex; gap: 10px;
-      }
-      .umr-actions .btn-view,
-      .umr-actions .btn-dl {
-        flex: 1; text-align: center;
-        padding: 9px 0; font-size: 0.75rem;
-      }
-    }
-  </style>
+            .header {
+                flex-direction: column;
+                gap: 0.85rem;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Hidden logo for link preview scrapers -->
-  <img src="logo.png" alt="MeetSolⁿ" style="display:none; width:1px; height:1px;"/>
+    <!-- Ambient Visual Glow Backgrounds -->
+    <div class="bg-glow-top" aria-hidden="true"></div>
+    <div class="bg-glow-bottom" aria-hidden="true"></div>
 
-  <!-- ACCESS GATE -->
-  <div id="accessGate">
-    <div class="gate-inner">
-      <div class="gate-logo">Meet<span>Sol</span><sup>n</sup></div>
-      <div class="gate-sub">Private Access — Enter Key to Continue</div>
-
-      <div class="gate-label">Access Key</div>
-      <div class="gate-input-wrap">
-        <input class="gate-input" type="password" id="gateInput" placeholder="••••••" maxlength="20"
-               onkeydown="if(event.key==='Enter') attemptUnlock()" autocomplete="off" spellcheck="false"/>
-        <button class="gate-eye" id="eyeBtn" onclick="toggleEye()" title="Show/Hide">👁</button>
-      </div>
-      <div class="gate-error" id="gateError">Incorrect access key entered.</div>
-
-      <button class="gate-btn" onclick="attemptUnlock()">Unlock &rarr;</button>
-      <a class="gate-apk-btn" href="MeetSol^n.apk" download>
-        ↓ Download MeetSolⁿ App (.apk)
-      </a>
-    </div>
-  </div>
-
-  <!-- PAGE LOADER -->
-  <div id="loader">
-    <div class="loader-logo">Meet<span>Sol</span><sup>n</sup></div>
-    <div class="loader-bar"><div class="loader-fill"></div></div>
-  </div>
-
-  <!-- CURSOR GLOW -->
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- NAV -->
-  <nav id="mainNav">
-    <div class="nav-logo">Meet<span style="color:var(--text)">Sol</span><sup>n</sup></div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-orb"></div>
-    <div class="particles" id="particles"></div>
-    <div class="hero-badge">PERSONAL SOLUTION VAULT</div>
-    <div class="hero-logo">Meet<span>Sol</span><sup>n</sup></div>
-    <p class="hero-tagline">
-      All solutions, notes &amp; practicals — curated by Meet.<br/>
-      <em>Stop texting. Start browsing.</em>
-    </p>
-
-    <div class="quick-access">
-      <a class="qa-btn" href="#maths">
-        <span class="qa-label">Maths</span>
-      </a>
-      <a class="qa-btn" href="#ai">
-        <span class="qa-label">AI</span>
-      </a>
-      <a class="qa-btn" href="#coming">
-        <span class="qa-label">English</span>
-      </a>
-      <a class="qa-btn qa-btn--urgent" href="#upcoming">
-        <span class="qa-label">Upcoming Submissions</span>
-      </a>
-    </div>
-
-    <a class="hero-apk-btn" href="MeetSol^n.apk" download>
-      ↓ Download MeetSolⁿ App (.apk)
-    </a>
-
-    <div class="scroll-hint">SCROLL</div>
-  </section>
-
-  <!-- MATHS SECTION -->
-  <section class="section" id="maths">
-    <div class="section-label reveal">01 / Mathematics</div>
-    <h2 class="section-title reveal">Class 11 — All Chapters</h2>
-    <p class="section-desc reveal">Click any chapter to view the PDF inline. Download button on the right.</p>
-
-    <div class="chapter-grid stagger-children">
-      <div class="chapter-card">
-        <span class="chapter-num">01</span>
-        <span class="chapter-name">Sets</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-01_Sets.pdf','Sets')">View</a>
-          <a class="btn-dl" href="Ch-01_Sets.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">02</span>
-        <span class="chapter-name">Relations &amp; Functions</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-02_Relations-Functions.pdf','Relations & Functions')">View</a>
-          <a class="btn-dl" href="Ch-02_Relations-Functions.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">03</span>
-        <span class="chapter-name">Trigonometric Functions</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-03_Trigonometric-Functions.pdf','Trigonometric Functions')">View</a>
-          <a class="btn-dl" href="Ch-03_Trigonometric-Functions.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">04</span>
-        <span class="chapter-name">Principle of Mathematical Induction</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-04_Principle-Of-Mathematical-Ind....pdf','Principle of Mathematical Induction')">View</a>
-          <a class="btn-dl" href="Ch-04_Principle-Of-Mathematical-Ind....pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">05</span>
-        <span class="chapter-name">Complex Numbers &amp; Quadratic Equations</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-05_Complex-Nos.-Quadratic-Eqs.pdf','Complex Numbers & Quadratic Equations')">View</a>
-          <a class="btn-dl" href="Ch-05_Complex-Nos.-Quadratic-Eqs.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">06</span>
-        <span class="chapter-name">Linear Inequalities</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-06_Linear-Inequalities.pdf','Linear Inequalities')">View</a>
-          <a class="btn-dl" href="Ch-06_Linear-Inequalities.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">07</span>
-        <span class="chapter-name">Permutations &amp; Combinations</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-07_Permutations-Combinations.pdf','Permutations & Combinations')">View</a>
-          <a class="btn-dl" href="Ch-07_Permutations-Combinations.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">08</span>
-        <span class="chapter-name">Binomial Theorem</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-08_Binomial-Theorem.pdf','Binomial Theorem')">View</a>
-          <a class="btn-dl" href="Ch-08_Binomial-Theorem.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">09</span>
-        <span class="chapter-name">Sequences &amp; Series</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-09_Sequences-Series.pdf','Sequences & Series')">View</a>
-          <a class="btn-dl" href="Ch-09_Sequences-Series.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">10</span>
-        <span class="chapter-name">Straight Lines</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-10_Straight-Lines.pdf','Straight Lines')">View</a>
-          <a class="btn-dl" href="Ch-10_Straight-Lines.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">11</span>
-        <span class="chapter-name">Conic Sections</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-11_Conic-Sections.pdf','Conic Sections')">View</a>
-          <a class="btn-dl" href="Ch-11_Conic-Sections.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">12</span>
-        <span class="chapter-name">Introduction to 3D Geometry</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-12_Introduction-To-3-Dimensional....pdf','Introduction to 3D Geometry')">View</a>
-          <a class="btn-dl" href="Ch-12_Introduction-To-3-Dimensional....pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">13</span>
-        <span class="chapter-name">Limits &amp; Derivatives</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-13_Limits-Derivatives.pdf','Limits & Derivatives')">View</a>
-          <a class="btn-dl" href="Ch-13_Limits-Derivatives.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">14</span>
-        <span class="chapter-name">Mathematical Reasoning</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-14_Mathematical-Reasoning.pdf','Mathematical Reasoning')">View</a>
-          <a class="btn-dl" href="Ch-14_Mathematical-Reasoning.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">15</span>
-        <span class="chapter-name">Statistics</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-15_Statistics.pdf','Statistics')">View</a>
-          <a class="btn-dl" href="Ch-15_Statistics.pdf" download>↓</a>
-        </div>
-      </div>
-      <div class="chapter-card">
-        <span class="chapter-num">16</span>
-        <span class="chapter-name">Probability</span>
-        <div class="chapter-actions">
-          <a class="btn-view" href="#" onclick="openPDF(event,'Ch-16_Probability.pdf','Probability')">View</a>
-          <a class="btn-dl" href="Ch-16_Probability.pdf" download>↓</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI SECTION -->
-  <section class="section" id="ai">
-    <div class="section-label reveal">02 / Artificial Intelligence</div>
-    <h2 class="section-title reveal">AI Practicals 2026</h2>
-    <p class="section-desc reveal">All practical files hosted on Dropbox. Click below to access the full folder.</p>
-    <div class="ai-card reveal">
-      <div class="teacher-credit">
-        <div class="teacher-photo-wrap">
-          <img src="hemlata.jpg" alt="Hemlata Shreyank Patel"/>
-        </div>
-        <span class="teacher-name">by Hemlata Shreyank Patel</span>
-      </div>
-      <div class="ai-card-left">
-        <h3>Artificial Intelligence — Practicals (2026)</h3>
-        <p>Complete set of AI practical submissions for the academic year 2026. Access the full folder on Dropbox.</p>
-      </div>
-      <a class="btn-primary" href="https://www.dropbox.com/scl/fo/385ietxfvzpw1r06olykl/AAi-0UlVr5Qq5O2RVqcPqRc?rlkey=n6o18ruk6aykuj6862v3hmkdr&st=r43h949c&dl=0" target="_blank" rel="noopener">Open Folder ↗</a>
-    </div>
-  </section>
-
-  <!-- ENGLISH + COMING SOON -->
-  <section class="section" id="coming">
-    <div class="section-label reveal">03 / English &amp; More</div>
-    <h2 class="section-title reveal">More Subjects</h2>
-    <p class="section-desc reveal">English content is now live. Other sections are on the way.</p>
-
-    <!-- English Live Card -->
-    <a class="english-card reveal" href="https://meet-solutions-english.vercel.app/" target="_blank" rel="noopener">
-      <div class="teacher-credit">
-        <div class="teacher-photo-wrap">
-          <img src="rumita.jpg" alt="Rumita Rakshit"/>
-        </div>
-        <span class="teacher-name">by Rumita Rakshit</span>
-      </div>
-      <div class="english-card-left">
-        <div class="eng-sub">↗ Click to open English content</div>
-        <h3>English</h3>
-        <p>Notes, solutions &amp; writing samples — live now. Click to view the full English section.</p>
-      </div>
-      <span class="btn-english">View English ↗</span>
-    </a>
-
-    <!-- New content banner -->
-    <div class="new-content-banner reveal">
-      <span class="banner-icon">📢</span>
-      <div class="banner-text">
-        <strong>New content on the way!!</strong>
-        Will be uploaded as Rumita Ji sends it!
-      </div>
-    </div>
-
-    <!-- Coming soon grid -->
-    <div style="margin-top:24px;" class="coming-grid stagger-children">
-      <div class="coming-card">
-        <h3>Physics Lab Readings</h3>
-        <p>Practical readings &amp; observations.</p>
-        <div class="coming-teacher">
-          <div class="coming-teacher-img-wrap">
-            <img src="vivek.JPG" alt="Vivek Hadvani"/>
-          </div>
-          <div class="coming-teacher-text">
-            <span class="coming-by">By Vivek Hadvani</span>
-            <span class="coming-approved">Approved by Astik or Vivek</span>
-          </div>
-        </div>
-      </div>
-      <div class="coming-card">
-        <h3>Chemistry Lab Readings</h3>
-        <p>Titrations, practicals &amp; viva prep.</p>
-        <div class="coming-teacher">
-          <div class="coming-teacher-img-wrap">
-            <img src="manjusha.jpg" alt="Manjusha Warrier"/>
-          </div>
-          <div class="coming-teacher-text">
-            <span class="coming-by">By Manjusha Warrier</span>
-            <span class="coming-approved">Approved by Shreedhala</span>
-          </div>
-        </div>
-      </div>
-      <div class="coming-card">
-        <h3>More…</h3>
-        <p>More content will be added progressively.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- UPCOMING SUBMISSIONS -->
-  <section class="section" id="upcoming">
-    <div class="section-label reveal">04 / Upcoming</div>
-    <h2 class="section-title reveal">Upcoming Submissions</h2>
-    <p class="section-desc reveal">Track deadlines, view question papers, and download them below.</p>
-
-    <div class="reveal" style="background:var(--card); border:1px solid var(--border); border-radius:8px; overflow:hidden;" class="upcoming-table-wrap">
-      <!-- Desktop table -->
-      <div class="upcoming-table-wrap">
-      <table class="upcoming-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Submission</th>
-            <th>Teacher</th>
-            <th>Deadline</th>
-            <th>Question Paper</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--muted);padding-left:20px;">01</td>
-            <td>
-              <div class="sub-title">AI Practical File Submission</div>
-              <div class="sub-type">Practical File</div>
-            </td>
-            <td>
-              <div class="sub-teacher-cell">
-                <img src="hemlata.jpg" alt="Hemlata Shreyank Patel"/>
-                <span>Hemlata<br/>Shreyank Patel</span>
-              </div>
-            </td>
-            <td>
-              <span class="deadline-badge">30 / 08 / 2026 or before</span>
-            </td>
-            <td>
-              <div class="sub-actions">
-                <a class="btn-view" href="#" onclick="openPDF(event,'practical-file.pdf','AI Practical File — Questions')">View</a>
-                <a class="btn-dl" href="practical-file.pdf" download>↓</a>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      </div>
-
-      <!-- Mobile card -->
-      <div class="upcoming-mobile">
-        <div class="upcoming-mobile-row">
-          <div class="umr-top">
-            <span class="umr-num">01</span>
-            <div class="umr-title-block">
-              <div class="umr-title">AI Practical File Submission</div>
-              <div class="umr-type">Practical File</div>
+    <!-- Top Institutional Header -->
+    <header class="header">
+        <div class="brand-container">
+            <div class="brand-logo" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
             </div>
-          </div>
-          <div class="umr-teacher">
-            <img src="hemlata.jpg" alt="Hemlata Shreyank Patel"/>
-            <span>Hemlata<br/>Shreyank Patel</span>
-          </div>
-          <div class="umr-deadline">
-            <span class="deadline-badge">30 / 08 / 2026 or before</span>
-          </div>
-          <div class="umr-actions">
-            <a class="btn-view" href="#" onclick="openPDF(event,'practical-file.pdf','AI Practical File — Questions')">View PDF</a>
-            <a class="btn-dl" href="practical-file.pdf" download>↓ Download</a>
-          </div>
+            <span class="brand-text">Corporate Infrastructure & Operations</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- UPDATES SECTION -->
-  <section class="section" id="updates">
-    <div class="section-label reveal">05 / Updates</div>
-    <h2 class="section-title reveal">Latest Updates</h2>
-    <p class="section-desc reveal">meetuupdatesxyz</p>
-  </section>
-
-  <!-- CONTACT FORM SECTION -->
-  <section class="section" id="contact">
-    <div class="section-label reveal">06 / Contact</div>
-    <h2 class="section-title reveal">Get in Touch</h2>
-    <p class="section-desc reveal">Have a doubt or want to request something? Drop your details below.</p>
-
-    <div class="reveal" style="background:var(--card); border:1px solid var(--border); border-radius:8px; padding: 32px 28px; max-width:520px;">
-      <div id="form-success" style="display:none; text-align:center; padding: 20px 0;">
-        <div style="font-size:2rem; margin-bottom:12px;">✅</div>
-        <div style="font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:var(--accent2);">Message sent successfully!</div>
-        <div style="font-size:0.8rem; color:var(--muted); margin-top:6px;">Meet will get back to you soon.</div>
-      </div>
-
-      <div id="contact-form">
-
-        <div class="form-group">
-          <label class="form-label">Name</label>
-          <input class="form-input" type="text" id="f-name" placeholder="Your full name" required/>
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Deployment Pending Assessment</span>
         </div>
+    </header>
 
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input class="form-input" type="email" id="f-email" placeholder="yourname@email.com" required/>
-        </div>
+    <!-- Main Content Centerpiece -->
+    <main class="main-wrapper">
+        <section class="announcement-card" aria-labelledby="status-title">
+            <!-- Icon -->
+            <div class="icon-wrapper" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                    <path d="M10 9l2 2 4-4"></path>
+                </svg>
+            </div>
 
-        <div class="form-group">
-          <label class="form-label">Mobile Number</label>
-          <input class="form-input" type="tel" id="f-mobile" placeholder="+91 XXXXX XXXXX" required/>
-        </div>
+            <!-- Official Status Details -->
+            <p class="pre-heading">System Advisory Notice #MYA-2026</p>
+            <h1 id="status-title" class="main-heading">The Site will Work After the Mid Year Assessment!</h1>
+            
+            <p class="lead-statement">
+                All production servers, feature updates, and online portal services are currently halted in strict compliance with the academic calendar. The platform will officially become fully operational once the Mid Year Assessment phase concludes.
+            </p>
 
-        <div class="form-group">
-          <label class="form-label">Message <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
-          <textarea class="form-input form-textarea" id="f-message" placeholder="Your doubt or request..."></textarea>
-        </div>
+            <div class="divider" aria-hidden="true"></div>
 
-        <div id="form-error" style="display:none; font-family:'JetBrains Mono',monospace; font-size:0.7rem; color:#ff8a8a; margin-bottom:14px;"></div>
+            <!-- Humorous Corporate Grid -->
+            <div class="audit-grid">
+                <div class="audit-card">
+                    <div class="audit-card-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        Resource Audit: Time Allocation
+                    </div>
+                    <p class="audit-card-desc">
+                        100% of executive bandwidth is currently reallocated to syllabus revision, coffee consumption, and assessment survival protocols.
+                    </p>
+                </div>
 
-        <button class="form-submit" id="f-submit" onclick="submitForm()">
-          <span id="f-btn-text">Send Message →</span>
-        </button>
-      </div>
-    </div>
-  </section>
+                <div class="audit-card">
+                    <div class="audit-card-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        Fiscal Status: Server Treasury
+                    </div>
+                    <p class="audit-card-desc">
+                        Fiscal reserves currently sit at a net ₹0.00. High-performance hosting funds are awaiting post-exam venture capital injections.
+                    </p>
+                </div>
+            </div>
 
-  <!-- FOOTER -->
-  <footer class="reveal">
-    <p class="footer-dev">Proudly developed by <span>Meet Nimbalkar</span></p>
-    <p class="footer-secret"><strong>Rumita must not know this !!</strong></p>
-  </footer>
+            <!-- Executive Statement Box -->
+            <div class="executive-memo">
+                <strong>Executive Advisory from Meet Nimbalkar (Founder & Sole Developer):</strong><br>
+                <span>“Due to an unprecedented confluence of zero available funding, acute time bankruptcy, and intense Mid Year Assessment preparation, all production deployment sprints have been pushed to post-exams. We appreciate your strategic patience.”</span>
+            </div>
+        </section>
+    </main>
 
-  <!-- PDF MODAL -->
-  <div class="modal-overlay" id="pdfModal" onclick="closeModal(event)">
-    <div class="modal-box" onclick="event.stopPropagation()">
-      <div class="modal-header">
-        <span class="modal-title" id="modalTitle">Chapter PDF</span>
-        <div class="modal-actions">
-          <a class="modal-dl" id="modalDl" href="#" download>↓ Download</a>
-          <button class="modal-close" onclick="closePDF()">✕</button>
-        </div>
-      </div>
-      <iframe class="pdf-frame" id="pdfFrame" src="" title="PDF Viewer"></iframe>
-    </div>
-  </div>
-
-  <script>
-    /* ── ACCESS GATE ── */
-    const CORRECT_KEY = 'VIVEKDOLU';
-
-    function toggleEye() {
-      const inp = document.getElementById('gateInput');
-      const btn = document.getElementById('eyeBtn');
-      if (inp.type === 'password') { inp.type = 'text';     btn.textContent = '🙈'; }
-      else                         { inp.type = 'password'; btn.textContent = '👁'; }
-    }
-
-    function attemptUnlock() {
-      const input  = document.getElementById('gateInput');
-      const errEl  = document.getElementById('gateError');
-      const gate   = document.getElementById('accessGate');
-      // Clear previous error state
-      input.classList.remove('error');
-      errEl.classList.remove('show');
-
-      // Check key (case-sensitive)
-      if (input.value !== CORRECT_KEY) {
-        errEl.textContent = 'Incorrect access key entered.';
-        errEl.classList.add('show');
-        input.classList.add('error');
-        input.value = '';
-        input.focus();
-        return;
-      }
-
-      // Correct — animate out
-      gate.classList.add('unlocking');
-      setTimeout(() => { gate.style.display = 'none'; }, 700);
-    }
-
-    /* ── LOADER ── */
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 1300);
-    });
-
-    /* ── CURSOR GLOW ── */
-    const glow = document.getElementById('cursorGlow');
-    document.addEventListener('mousemove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
-    });
-
-    /* ── NAV SCROLL ── */
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-
-    /* ── PARTICLES ── */
-    const container = document.getElementById('particles');
-    for (let i = 0; i < 18; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      const size = Math.random() * 3 + 1;
-      p.style.cssText = `
-        width:${size}px; height:${size}px;
-        left:${Math.random()*100}%;
-        bottom:${Math.random()*20}%;
-        animation-duration:${Math.random()*12+8}s;
-        animation-delay:${Math.random()*10}s;
-        opacity:0;
-      `;
-      container.appendChild(p);
-    }
-
-    /* ── SCROLL REVEAL ── */
-    const revealEls = document.querySelectorAll('.reveal, .stagger-children');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.isIntersecting) {
-          en.target.classList.add('visible');
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-
-    /* ── PDF MODAL ── */
-    function openPDF(e, path, name) {
-      e.preventDefault();
-      document.getElementById('pdfFrame').src    = path;
-      document.getElementById('modalTitle').textContent = name;
-      document.getElementById('modalDl').href    = path;
-      const modal = document.getElementById('pdfModal');
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    function closePDF() {
-      const modal = document.getElementById('pdfModal');
-      modal.classList.remove('active');
-      setTimeout(() => { document.getElementById('pdfFrame').src = ''; }, 300);
-      document.body.style.overflow = '';
-    }
-    function closeModal(e) { if (e.target.id === 'pdfModal') closePDF(); }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePDF(); });
-
-    /* ── WEB3FORMS SUBMIT ── */
-    /* ── EMAILJS SUBMIT ── */
-    async function submitForm() {
-      const name    = document.getElementById('f-name').value.trim();
-      const email   = document.getElementById('f-email').value.trim();
-      const mobile  = document.getElementById('f-mobile').value.trim();
-      const message = document.getElementById('f-message').value.trim() || '—';
-      const errEl   = document.getElementById('form-error');
-      const btn     = document.getElementById('f-submit');
-      const btnText = document.getElementById('f-btn-text');
-
-      errEl.style.display = 'none';
-
-      if (!name || !email || !mobile) {
-        errEl.textContent = 'Please fill in all required fields.';
-        errEl.style.display = 'block';
-        return;
-      }
-
-      btn.disabled = true;
-      btnText.textContent = 'Sending...';
-
-      try {
-        await emailjs.send('service_gknsd9k', 'template_6ocnmyi', {
-          name, email, mobile, message
-        });
-        document.getElementById('contact-form').style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-      } catch {
-        errEl.textContent = 'Something went wrong. Please try again.';
-        errEl.style.display = 'block';
-        btn.disabled = false;
-        btnText.textContent = 'Send Message →';
-      }
-    }
-  </script>
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <p>Thank you for your patience, understanding, and continued cooperation.</p>
+        <p class="footer-compliance">System Reference: ERR_MID_YEAR_ASSESSMENT_OVERRIDE | Maintained by Meet Nimbalkar</p>
+    </footer>
 
 </body>
 </html>
